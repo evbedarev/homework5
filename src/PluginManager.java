@@ -5,12 +5,13 @@ public class PluginManager {
         this.rootDirectory = rootDirectory;
     }
 
-    public void loadPlugin(String pluginName) throws Exception {
+    public Plugin loadPlugin(String pluginName) throws Exception {
         ClassLoader loader = new NewClassLoader(this.rootDirectory);
         try {
             Class plugin = Class.forName(pluginName, true, loader);
             Object object = plugin.newInstance();
-
+            Plugin pugin = (Plugin) object;
+            return  pugin;
         } catch (ClassNotFoundException cl) {
 
             throw new PluginNotFoundException("couldn't locate plugin " + pluginName);

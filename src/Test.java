@@ -8,8 +8,8 @@ public class Test {
             String[] someStringMassive = new String[3];
             someStringMassive[0] = "123";
             PluginManager pluginManager = new PluginManager("./pluginRootDirectory");
-            pluginManager.loadPlugin("TestModule");
-//            plug.run(someStringMassive);
+            pluginManager.loadPlugin("TestModule").run(someStringMassive);
+
             new BufferedReader(new InputStreamReader(System.in)).readLine();
         }
 
