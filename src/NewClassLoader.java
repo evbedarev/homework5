@@ -7,7 +7,7 @@ import java.net.URL;
 public class NewClassLoader extends ClassLoader {
     private String path;
 
-    NewClassLoader (String rootDirectory) {
+    public NewClassLoader (String path) {
         this.path = path;
     }
 
@@ -23,6 +23,9 @@ public class NewClassLoader extends ClassLoader {
     protected  Class findClass(String name) throws ClassNotFoundException {
         File file = findFile(name, ".class");
         Class result = null;
+        if (file==null)
+            return findSystemClass(name);
+
         try {
             byte[] classByte = loadFileAsBytes(file);
             result = defineClass(name, classByte,0, classByte.length);
@@ -34,8 +37,8 @@ public class NewClassLoader extends ClassLoader {
 
     //Ищет файл
     private File findFile(String name, String extension) {
-        File file = new File(rootDirectory + File.separatorChar + "pluginRootDirectory" +
-                                            File.separatorChar + name + File.separatorChar + name + extension);
+        System.out.println(path + File.separatorChar + "TestModule" + File.separatorChar+ name + extension);
+        File file = new File(path + File.separatorChar + "TestModule" + File.separatorChar+ name + extension);
         if (file.exists())
             return file;
         return null;

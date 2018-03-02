@@ -5,12 +5,11 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
         for (;;) {
-            PluginManager pluginManager = new PluginManager(".");
-            ClassLoader loader =
-            Class clazz = Class.forName("TestModule", true, loader);
-            Object object = clazz.newInstance();
-            System.out.println(object);
-            System.out.println(clazz.getClassLoader().getClass());
+            String[] someStringMassive = new String[3];
+            someStringMassive[0] = "123";
+            PluginManager pluginManager = new PluginManager("./pluginRootDirectory");
+            pluginManager.loadPlugin("TestModule");
+//            plug.run(someStringMassive);
             new BufferedReader(new InputStreamReader(System.in)).readLine();
         }
 
