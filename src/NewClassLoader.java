@@ -47,7 +47,6 @@ public class NewClassLoader extends ClassLoader {
         }
 
         try {
-
             byte[] classByte = loadFileAsBytes(file);
             result = defineClass(name, classByte,0, classByte.length);
 

@@ -22,8 +22,6 @@ public class PluginManager {
             throw new PluginNotFoundException("couldn't locate plugin " + pluginName);
         }
     }
-
-
 }
 
 class PluginNotFoundException extends Exception {
