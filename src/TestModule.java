@@ -1,10 +1,17 @@
 public class TestModule implements Plugin{
-    public void run (String[] urls) {
-        for (String str: urls) {
-            System.out.println(str);
-            System.out.println("Version 1.3");
-        }
+    public TestModule() {
+        System.out.println("Class Test. Version 1.1");
+        System.out.println(this.getClass().getClassLoader().toString());
     }
 
+    public void run (String[] urls) {
+        System.out.println("Class Test. Version 1.1");
+    }
+
+/*
+    @Override
+    public String toString() {
+        return "Class Test. Version 1.1";
+    }*/
 }
 
